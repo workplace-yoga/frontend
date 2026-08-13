@@ -150,7 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             showNotification('Session restored successfully.', 'success');
             
-            if (currentRole === 'ADMIN') {
+            if (currentRole === 'SUPER_ADMIN') {
+                showView('super-admin');
+                initSuperAdminDashboard(claims);
+            } else if (currentRole === 'ADMIN') {
                 showView('admin');
                 initAdminDashboard(claims);
             } else {
