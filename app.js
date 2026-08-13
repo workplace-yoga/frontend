@@ -308,7 +308,10 @@ async function handleLogin(event) {
         
         showNotification('Login successful!', 'success');
         
-        if (currentRole === 'ADMIN') {
+        if (currentRole === 'SUPER_ADMIN') {
+            showView('super-admin');
+            initSuperAdminDashboard(claims);
+        } else if (currentRole === 'ADMIN') {
             showView('admin');
             initAdminDashboard(claims);
         } else {
@@ -829,4 +832,88 @@ function showNotification(message, type = 'info') {
     setTimeout(() => {
         toast.classList.remove('show');
     }, 4000);
+}
+
+// ==========================================================================
+// Platform Super Admin System Portal Controller
+// ==========================================================================
+async function initSuperAdminDashboard(claims) {
+    document.getElementById('super-admin-user-display').textContent = 'yogaroh16@gmail.com (Super Admin)';
+    await loadSuperAdminData();
+}
+
+async function loadSuperAdminData() {
+    try {
+        const summary = await makeRequest('/super-admin/summary');
+        document.getElementById('super-metric-companies').textContent = summary.total_companies;
+        document.getElementById('super-metric-users').textContent = summary.total_users;
+        document.getElementById('super-metric-users-breakdown').textContent = `${summary.total_admins} Admins, ${summary.total_employees} Employees`;
+        document.getElementById('super-metric-verified').textContent = summary.verified_users_count;
+        document.getElementById('super-metric-score').textContent = summary.average_trust_score;
+
+        // Load Companies Table
+        const companies = await makeRequest('/super-admin/companies');
+        const compTbody = document.getElementById('super-companies-tbody');
+        compTbody.innerHTML = '';
+        if (companies.length === 0) {
+            compTbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No corporate workspaces provisioned yet.</td></tr>`;
+        } else {
+            companies.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><span class="text-bold">${c.name}</span><br><small class="text-muted">ID: ${c.id.slice(0, 8)}...</small></td>
+                    <td><span class="badge badge-cyan">${c.company_code}</span></td>
+                    <td><small class="text-muted">${c.admin_email || 'None'}</small></td>
+                    <td><span class="text-bold">${c.total_employees}</span></td>
+                    <td><span class="badge ${c.is_active ? 'badge-green' : 'badge-red'}">${c.is_active ? 'ACTIVE' : 'SUSPENDED'}</span></td>
+                    <td>
+                        <button class="btn btn-sm ${c.is_active ? 'btn-outline-danger' : 'btn-outline-success'}" onclick="toggleCompanyStatus('${c.id}')">
+                            ${c.is_active ? 'Suspend Workspace' : 'Activate Workspace'}
+                        </button>
+                    </td>
+                `;
+                compTbody.appendChild(tr);
+            });
+        }
+
+        // Load Users Directory Table
+        const users = await makeRequest('/super-admin/users');
+        const usersTbody = document.getElementById('super-users-tbody');
+        usersTbody.innerHTML = '';
+        if (users.length === 0) {
+            usersTbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No user accounts found.</td></tr>`;
+        } else {
+            users.forEach(u => {
+                const tr = document.createElement('tr');
+                let lastSeenStr = 'Never';
+                if (u.last_seen_at) {
+                    lastSeenStr = new Date(u.last_seen_at).toLocaleTimeString();
+                }
+                const scoreClass = getScoreColorClass(u.current_score);
+
+                tr.innerHTML = `
+                    <td><span class="text-bold">${u.full_name || 'User'}</span><br><small class="text-muted">${u.email}</small></td>
+                    <td><span class="text-bold">${u.company_name}</span></td>
+                    <td><span class="badge ${u.role === 'SUPER_ADMIN' ? 'badge-purple' : u.role === 'ADMIN' ? 'badge-cyan' : 'badge-green'}">${u.role}</span></td>
+                    <td><span class="score-badge ${scoreClass}">${u.current_score}</span></td>
+                    <td><span class="text-bold text-${getScoreColorText(u.current_score)}">${u.status}</span></td>
+                    <td><span class="badge ${u.is_email_verified ? 'badge-green' : 'badge-yellow'}">${u.is_email_verified ? 'VERIFIED' : 'PENDING'}</span></td>
+                    <td><small>${lastSeenStr}</small></td>
+                `;
+                usersTbody.appendChild(tr);
+            });
+        }
+    } catch (err) {
+        showNotification(`Failed to load Super Admin portal data: ${err.message}`, 'error');
+    }
+}
+
+async function toggleCompanyStatus(companyId) {
+    try {
+        const res = await makeRequest(`/super-admin/company/${companyId}/toggle`, { method: 'POST' });
+        showNotification(res.message, 'success');
+        await loadSuperAdminData();
+    } catch (err) {
+        showNotification(`Action failed: ${err.message}`, 'error');
+    }
 }

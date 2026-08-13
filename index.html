@@ -359,6 +359,107 @@
             </div>
         </section>
 
+        <!-- 3. SUPER ADMIN SYSTEM PORTAL VIEW -->
+        <section id="super-admin-view" class="view">
+            <nav class="navbar glass-card">
+                <div class="navbar-brand">
+                    <span class="logo-icon">👑</span>
+                    <span class="logo-text">Platform Super Admin System Portal</span>
+                </div>
+                <div class="navbar-user">
+                    <span id="super-admin-user-display" class="user-badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4);">yogaroh16@gmail.com</span>
+                    <button class="btn btn-sm btn-outline" onclick="openBackendSettingsModal()" title="Backend Connection Settings">⚙️ Server</button>
+                    <button class="btn btn-sm btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+
+            <div class="dashboard-content">
+                <!-- Metrics Bar -->
+                <div class="metrics-grid">
+                    <div class="metric-card glass-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Total Workspaces</span>
+                            <span class="metric-icon">🏢</span>
+                        </div>
+                        <div class="metric-value" id="super-metric-companies">0</div>
+                        <div class="metric-footer text-muted">Registered Companies</div>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Global Platform Users</span>
+                            <span class="metric-icon">👥</span>
+                        </div>
+                        <div class="metric-value text-cyan" id="super-metric-users">0</div>
+                        <div class="metric-footer text-muted" id="super-metric-users-breakdown">0 Admins, 0 Employees</div>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Verified Accounts</span>
+                            <span class="metric-icon">✅</span>
+                        </div>
+                        <div class="metric-value text-green" id="super-metric-verified">0</div>
+                        <div class="metric-footer text-muted">Email Verified Users</div>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <div class="metric-header">
+                            <span class="metric-title">Avg Platform Posture</span>
+                            <span class="metric-icon">🛡️</span>
+                        </div>
+                        <div class="metric-value text-purple" id="super-metric-score">100</div>
+                        <div class="metric-footer text-muted">Global Trust Index</div>
+                    </div>
+                </div>
+
+                <!-- Global Workspaces & Tenants Table -->
+                <div class="glass-card" style="padding: 1.5rem; margin-top: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">Registered Corporate Workspaces</h3>
+                        <button class="btn btn-sm btn-primary" onclick="loadSuperAdminData()">🔄 Refresh System Data</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Workspace Name</th>
+                                    <th>Invite Code</th>
+                                    <th>Admin Contact</th>
+                                    <th>Employees Count</th>
+                                    <th>Tenant Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="super-companies-tbody">
+                                <tr><td colspan="6" class="text-center text-muted">Loading registered workspaces...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Global Users Directory Table -->
+                <div class="glass-card" style="padding: 1.5rem; margin-top: 1.5rem;">
+                    <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">Global Registered Users Directory</h3>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User Details</th>
+                                    <th>Company Workspace</th>
+                                    <th>Role</th>
+                                    <th>Trust Score</th>
+                                    <th>Status</th>
+                                    <th>Email Verified</th>
+                                    <th>Last Active</th>
+                                </tr>
+                            </thead>
+                            <tbody id="super-users-tbody">
+                                <tr><td colspan="7" class="text-center text-muted">Loading user accounts...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 4. BACKEND SERVER CONFIGURATION MODAL -->
         <div id="backend-settings-modal" class="modal">
             <div class="modal-content glass-card" style="max-width: 440px; padding: 1.75rem;">
