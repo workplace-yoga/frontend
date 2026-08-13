@@ -294,7 +294,7 @@ function switchAuthTab(tabName, targetEmail = null) {
 
 async function handleLogin(event) {
     event.preventDefault();
-    const email = document.getElementById('login-email').value;
+    const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
     
     try {
@@ -302,24 +302,32 @@ async function handleLogin(event) {
             method: 'POST',
             body: JSON.stringify({ email, password })
         });
-        
-        localStorage.setItem('access_token', data.access_token);
-        const claims = decodeToken(data.access_token);
-        currentUserId = claims.sub;
-        currentCompanyId = claims.company_id;
-        currentRole = claims.role;
-        
-        showNotification('Login successful!', 'success');
-        
-        if (currentRole === 'SUPER_ADMIN') {
-            showView('super-admin');
-            initSuperAdminDashboard(claims);
-        } else if (currentRole === 'ADMIN') {
-            showView('admin');
-            initAdminDashboard(claims);
-        } else {
-            showView('employee');
-            initEmployeeDashboard(claims);
+
+        if (data.status === 'otp_required') {
+            showNotification('A 6-digit verification code has been sent to your email.', 'info');
+            switchAuthTab('verify', email);
+            return;
+        }
+
+        if (data.access_token) {
+            localStorage.setItem('access_token', data.access_token);
+            const claims = decodeToken(data.access_token);
+            currentUserId = claims.sub;
+            currentCompanyId = claims.company_id;
+            currentRole = claims.role;
+            
+            showNotification('Login successful!', 'success');
+            
+            if (currentRole === 'SUPER_ADMIN') {
+                showView('super-admin');
+                initSuperAdminDashboard(claims);
+            } else if (currentRole === 'ADMIN') {
+                showView('admin');
+                initAdminDashboard(claims);
+            } else {
+                showView('employee');
+                initEmployeeDashboard(claims);
+            }
         }
     } catch (err) {
         if (err.message && err.message.includes('email_not_verified')) {
@@ -382,16 +390,47 @@ async function handleVerifyEmail(event) {
     }
 
     try {
-        await makeRequest('/auth/verify-email', {
+        const res = await makeRequest('/auth/verify-login-otp', {
             method: 'POST',
             body: JSON.stringify({ email, code })
         });
 
-        showNotification('Email verified successfully! You can now log in.', 'success');
-        document.getElementById('login-email').value = email;
-        switchAuthTab('login');
+        if (res.access_token) {
+            localStorage.setItem('access_token', res.access_token);
+            const claims = decodeToken(res.access_token);
+            currentUserId = claims.sub;
+            currentCompanyId = claims.company_id;
+            currentRole = claims.role;
+
+            showNotification('Verification successful! Logging in...', 'success');
+
+            if (currentRole === 'SUPER_ADMIN') {
+                showView('super-admin');
+                initSuperAdminDashboard(claims);
+            } else if (currentRole === 'ADMIN') {
+                showView('admin');
+                initAdminDashboard(claims);
+            } else {
+                showView('employee');
+                initEmployeeDashboard(claims);
+            }
+        } else {
+            showNotification('Email verified successfully! You can now log in.', 'success');
+            document.getElementById('login-email').value = email;
+            switchAuthTab('login');
+        }
     } catch (err) {
-        showNotification(`Verification failed: ${err.message}`, 'error');
+        try {
+            await makeRequest('/auth/verify-email', {
+                method: 'POST',
+                body: JSON.stringify({ email, code })
+            });
+            showNotification('Email verified successfully! You can now log in.', 'success');
+            document.getElementById('login-email').value = email;
+            switchAuthTab('login');
+        } catch (e) {
+            showNotification(`Verification failed: ${err.message}`, 'error');
+        }
     }
 }
 
