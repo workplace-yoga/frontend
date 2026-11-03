@@ -1,0 +1,21 @@
+config:
+  target: "https://adaptivetrust-backend.onrender.com/api/v1"
+  phases:
+    - duration: 60
+      arrivalRate: 20
+      rampTo: 100
+      name: "Baseline Ramp Up to 100 VUs"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Public Auth and Telemetry Checkin"
+    flow:
+      - get:
+          url: "/health"
+      - post:
+          url: "/auth/login"
+          json:
+            email: "admin@adaptivetrust.io"
+            password: "Password@123"

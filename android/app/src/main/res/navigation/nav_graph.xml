@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <!-- Tab 1: Glanceable Feed -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.adaptiveTrust.mobile.ui.screens.DashboardFragment"
+        android:label="Feed"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboard_to_user_detail"
+            app:destination="@id/userDetailFragment" />
+    </fragment>
+
+    <!-- Tab 2: Real-time Console -->
+    <fragment
+        android:id="@+id/consoleFragment"
+        android:name="com.adaptiveTrust.mobile.ui.screens.ConsoleFragment"
+        android:label="Console"
+        tools:layout="@layout/fragment_console"/>
+
+    <!-- Tab 3: Sensitivity Slider -->
+    <fragment
+        android:id="@+id/sensitivityFragment"
+        android:name="com.adaptiveTrust.mobile.ui.screens.SensitivityFragment"
+        android:label="Sensitivity"
+        tools:layout="@layout/fragment_sensitivity"/>
+
+    <!-- Detail (pushed from Dashboard) -->
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.adaptiveTrust.mobile.ui.screens.UserDetailFragment"
+        android:label="User Detail"
+        tools:layout="@layout/fragment_user_detail">
+
+        <argument
+            android:name="userId"
+            app:argType="string"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/integrationsFragment"
+        android:name="com.adaptiveTrust.mobile.ui.screens.IntegrationsFragment"
+        android:label="Data Sources"
+        tools:layout="@layout/fragment_integrations"/>
+
+    <!-- Tab 5: Settings -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.adaptiveTrust.mobile.ui.screens.SettingsFragment"
+        android:label="Config"
+        tools:layout="@layout/fragment_settings"/>
+
+</navigation>

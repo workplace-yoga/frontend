@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <!-- Hex-grid / shield logo placeholder -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🛡"
+        android:textSize="64sp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AdaptiveTrust"
+        android:textColor="@color/accent_cyan"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zero Trust Command Center"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- Username -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_username"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_username"
+        app:boxBackgroundColor="@color/bg_input"
+        app:boxStrokeColor="@color/accent_cyan"
+        app:hintTextColor="@color/text_secondary"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:inputType="text"
+            android:fontFamily="monospace"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_password"
+        app:boxBackgroundColor="@color/bg_input"
+        app:boxStrokeColor="@color/accent_cyan"
+        app:hintTextColor="@color/text_secondary"
+        app:passwordToggleEnabled="true"
+        android:layout_marginBottom="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:inputType="textPassword"
+            android:fontFamily="monospace"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Login Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        android:layout_width="320dp"
+        android:layout_height="52dp"
+        android:text="@string/btn_login"
+        android:textAllCaps="false"
+        android:fontFamily="monospace"
+        android:textSize="15sp"
+        app:backgroundTint="@color/accent_cyan"
+        android:textColor="@color/bg_primary"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- OTP Section (Hidden initially) -->
+    <TextView
+        android:id="@+id/tv_otp_instruction"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="A 6-digit secure code has been sent to your registered admin email. Please enter it below to proceed."
+        android:textColor="@color/accent_cyan"
+        android:textSize="14sp"
+        android:fontFamily="monospace"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_otp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter 6-digit OTP"
+        app:boxBackgroundColor="@color/bg_input"
+        app:boxStrokeColor="@color/accent_cyan"
+        app:hintTextColor="@color/text_secondary"
+        android:visibility="gone"
+        android:layout_marginBottom="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:inputType="number"
+            android:maxLength="6"
+            android:fontFamily="monospace"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verify_otp"
+        android:layout_width="320dp"
+        android:layout_height="52dp"
+        android:text="Verify OTP"
+        android:textAllCaps="false"
+        android:fontFamily="monospace"
+        android:textSize="15sp"
+        app:backgroundTint="@color/accent_cyan"
+        android:textColor="@color/bg_primary"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Progress -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/accent_cyan"/>
+
+    <!-- Register Link -->
+    <TextView
+        android:id="@+id/tv_go_to_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New company? Register here"
+        android:textColor="@color/accent_cyan"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TLS 1.3 · AES-256 · Zero Trust"
+        android:textColor="@color/text_tertiary"
+        android:textSize="10sp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="32dp"/>
+
+</LinearLayout>

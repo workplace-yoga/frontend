@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── Industrial Command Center Color Palette ───────────────────────────── -->
+
+    <!-- Base Dark Backgrounds -->
+    <color name="bg_primary">#0D1117</color>        <!-- GitHub-dark-inspired -->
+    <color name="bg_surface">#161B22</color>
+    <color name="bg_card">#1C2128</color>
+    <color name="bg_elevated">#22272E</color>
+    <color name="bg_input">#2D333B</color>
+
+    <!-- Trust Status Colors (High-contrast) -->
+    <color name="status_green">#00E676</color>
+    <color name="status_yellow">#FFD600</color>
+    <color name="status_red">#FF1744</color>
+
+    <!-- Accent / Interactive -->
+    <color name="accent_cyan">#00B0FF</color>
+    <color name="accent_blue">#448AFF</color>
+    <color name="accent_purple">#E040FB</color>
+
+    <!-- Text -->
+    <color name="text_primary">#E6EDF3</color>
+    <color name="text_secondary">#8B949E</color>
+    <color name="text_tertiary">#484F58</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Borders / Dividers -->
+    <color name="border_default">#30363D</color>
+    <color name="border_muted">#21262D</color>
+
+    <!-- Severity / Alert tiers -->
+    <color name="severity_critical">#FF1744</color>
+    <color name="severity_high">#FF6D00</color>
+    <color name="severity_medium">#FFD600</color>
+    <color name="severity_low">#00E676</color>
+
+    <!-- Chart fill colors -->
+    <color name="chart_fill_alpha">#3300E676</color>
+    <color name="chart_line">#00E676</color>
+
+    <!-- Material required -->
+    <color name="purple_200">#E040FB</color>
+    <color name="purple_500">#9C27B0</color>
+    <color name="purple_700">#7B1FA2</color>
+    <color name="teal_200">#00BCD4</color>
+    <color name="teal_700">#0097A7</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

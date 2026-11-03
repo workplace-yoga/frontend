@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── Base theme: Material3 dark ─────────────────────────────────────── -->
+    <style name="Theme.AdaptiveTrust" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/accent_cyan</item>
+        <item name="colorPrimaryVariant">@color/accent_blue</item>
+        <item name="colorOnPrimary">@color/bg_primary</item>
+        <item name="colorSecondary">@color/accent_purple</item>
+        <item name="colorOnSecondary">@color/text_on_primary</item>
+        <item name="colorSurface">@color/bg_surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorBackground">@color/bg_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/bg_primary</item>
+        <item name="android:navigationBarColor">@color/bg_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <!-- Login variant – slightly elevated card bg -->
+    <style name="Theme.AdaptiveTrust.Login" parent="Theme.AdaptiveTrust">
+        <item name="android:colorBackground">@color/bg_primary</item>
+    </style>
+
+    <!-- ── Card style ─────────────────────────────────────────────────────── -->
+    <style name="Widget.AdaptiveTrust.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/bg_card</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="strokeColor">@color/border_default</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- ── Nudge button – Verify (green tint) ────────────────────────────── -->
+    <style name="Widget.AdaptiveTrust.Button.Verify" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/status_green</item>
+        <item name="android:textColor">@color/bg_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- ── Nudge button – Approve (yellow tint) ──────────────────────────── -->
+    <style name="Widget.AdaptiveTrust.Button.Approve" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/status_yellow</item>
+        <item name="android:textColor">@color/bg_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- ── Nudge button – Suspend (red tint) ─────────────────────────────── -->
+    <style name="Widget.AdaptiveTrust.Button.Suspend" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/status_red</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- ── Monospace text for console ────────────────────────────────────── -->
+    <style name="TextAppearance.AdaptiveTrust.Console" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <!-- ── Score display (large number) ──────────────────────────────────── -->
+    <style name="TextAppearance.AdaptiveTrust.Score" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textSize">64sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- ── Status badge chip ─────────────────────────────────────────────── -->
+    <style name="Widget.AdaptiveTrust.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/bg_elevated</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="chipStrokeColor">@color/border_default</item>
+        <item name="chipStrokeWidth">1dp</item>
+    </style>
+</resources>

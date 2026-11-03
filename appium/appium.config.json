@@ -1,0 +1,32 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 4723,
+    "basePath": "/"
+  },
+  "capabilities": {
+    "platformName": "Android",
+    "automationName": "UiAutomator2",
+    "deviceName": "Android Emulator",
+    "platformVersion": "13.0",
+    "app": "C:/Users/yogan/.gemini/antigravity-ide/scratch/adaptivetrust-multitenant/AdaptiveTrust-Mobile-Release.apk",
+    "appPackage": "com.adaptivetrust.mobile",
+    "appActivity": "com.adaptivetrust.mobile.ui.MainActivity",
+    "noReset": false,
+    "fullReset": false,
+    "autoGrantPermissions": true,
+    "newCommandTimeout": 300
+  },
+  "timeouts": {
+    "implicit": 10,
+    "explicit": 20,
+    "pageLoad": 30
+  },
+  "reporting": {
+    "screenshotOnFailure": true,
+    "generateExcel": true,
+    "generateHtml": true,
+    "excelReportPath": "reports/Automation_Test_Report.xlsx",
+    "htmlReportPath": "reports/execution-report.html"
+  }
+}

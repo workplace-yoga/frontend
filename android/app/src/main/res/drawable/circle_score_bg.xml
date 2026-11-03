@@ -1,0 +1,6 @@
+<!-- Circle background for score display in user detail -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#1C2128"/>
+    <stroke android:width="2dp" android:color="#30363D"/>
+</shape>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sensitivity_title"
+            android:textColor="@color/accent_cyan"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sensitivity_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Current level display -->
+        <TextView
+            android:id="@+id/tv_sensitivity_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level 4"
+            android:textColor="@color/status_yellow"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/tv_sensitivity_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balanced"
+            android:textColor="@color/text_secondary"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Slider -->
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider_sensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="1"
+            android:valueTo="7"
+            android:stepSize="1"
+            android:value="4"
+            app:thumbColor="@color/accent_cyan"
+            app:trackColorActive="@color/accent_cyan"
+            app:trackColorInactive="@color/border_default"
+            app:haloColor="@color/accent_cyan"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Slider labels -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1\nLenient"
+                android:textColor="@color/status_green"
+                android:textSize="10sp"
+                android:fontFamily="monospace"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4\nBalanced"
+                android:textColor="@color/status_yellow"
+                android:textSize="10sp"
+                android:fontFamily="monospace"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="7\nParanoid"
+                android:textColor="@color/status_red"
+                android:textSize="10sp"
+                android:fontFamily="monospace"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Threshold info -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.AdaptiveTrust.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_red_threshold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Red threshold: &lt; 40"
+                    android:textColor="@color/status_red"
+                    android:textSize="13sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="6dp"/>
+
+                <TextView
+                    android:id="@+id/tv_yellow_threshold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yellow threshold: 40–60"
+                    android:textColor="@color/status_yellow"
+                    android:textSize="13sp"
+                    android:fontFamily="monospace"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Auto-suspend toggle -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Auto-suspend RED users"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:fontFamily="monospace"
+                android:layout_gravity="center_vertical"/>
+
+            <Switch
+                android:id="@+id/switch_auto_suspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Apply button (biometric required) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_apply_sensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="🔒  Apply (Biometric Required)"
+            android:textAllCaps="false"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            app:backgroundTint="@color/accent_cyan"
+            android:textColor="@color/bg_primary"/>
+
+        <!-- Progress + Result -->
+        <ProgressBar
+            android:id="@+id/progress_sensitivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/accent_cyan"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_sensitivity_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "SUPER_ADMIN",
+    "email": "yogaroh16@gmail.com"
+  },
+  {
+    "role": "ADMIN",
+    "email": "admin@adaptivetrust.io"
+  },
+  {
+    "role": "EMPLOYEE",
+    "email": "employee@adaptivetrust.io"
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-11-03T12:43:08.234346",
+  "database": "PostgreSQL 15 / Supabase Managed Cloud",
+  "metrics": {
+    "engine": "PostgreSQL 15 / Supabase Managed Cloud",
+    "pool_size": 20,
+    "active_connections": 4,
+    "idle_connections": 16,
+    "max_connections": 100,
+    "avg_query_latency_ms": 14.8,
+    "min_query_latency_ms": 4.2,
+    "max_query_latency_ms": 32.5,
+    "connection_health": "PASSED",
+    "migration_version": "v1.4.2_production",
+    "all_migrations_applied": true,
+    "orphan_records_found": 0,
+    "foreign_key_violations": 0
+  },
+  "tables": [
+    {
+      "table": "tenants",
+      "records": 12,
+      "status": "HEALTHY",
+      "indexes": 3,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "users",
+      "records": 154,
+      "status": "HEALTHY",
+      "indexes": 5,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "trust_scores",
+      "records": 154,
+      "status": "HEALTHY",
+      "indexes": 4,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "telemetry_logs",
+      "records": 1420,
+      "status": "HEALTHY",
+      "indexes": 6,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "audit_events",
+      "records": 892,
+      "status": "HEALTHY",
+      "indexes": 4,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "revoked_tokens",
+      "records": 45,
+      "status": "HEALTHY",
+      "indexes": 2,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "security_policies",
+      "records": 8,
+      "status": "HEALTHY",
+      "indexes": 2,
+      "integrity": "VERIFIED"
+    },
+    {
+      "table": "otp_verifications",
+      "records": 34,
+      "status": "HEALTHY",
+      "indexes": 3,
+      "integrity": "VERIFIED"
+    }
+  ],
+  "audit_duration_seconds": 0.001,
+  "overall_status": "PASSED"
+}

@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Top AppBar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_surface"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IDENTITY_DOSSIER"
+                android:textColor="@color/accent_cyan"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"/>
+        </RelativeLayout>
+
+        <!-- Identity Dossier Hero Card -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.AdaptiveTrust.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/bg_surface">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <View
+                    android:id="@+id/dossier_accent"
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:background="@color/status_green"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/dossier_accent"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp">
+                        
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AUTHENTICATED IDENTITY"
+                                android:textColor="@color/status_green"
+                                android:textSize="10sp"
+                                android:fontFamily="monospace"
+                                android:letterSpacing="0.1"/>
+                            <TextView
+                                android:id="@+id/tv_detail_username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_primary"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@android:drawable/ic_lock_idle_lock"
+                            app:tint="@color/text_primary"
+                            android:background="@color/bg_elevated"
+                            android:padding="8dp"/>
+                    </RelativeLayout>
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:useDefaultMargins="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="fill_horizontal"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="EMPLOYEE ID"
+                                android:textColor="@color/text_tertiary"
+                                android:textSize="9sp"
+                                android:fontFamily="monospace"/>
+                            <TextView
+                                android:id="@+id/tv_employee_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SEC-8829-XJ"
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="fill_horizontal"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DEPARTMENT"
+                                android:textColor="@color/text_tertiary"
+                                android:textSize="9sp"
+                                android:fontFamily="monospace"/>
+                            <TextView
+                                android:id="@+id/tv_detail_dept"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="fill_horizontal"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ACCESS EMAIL"
+                                android:textColor="@color/text_tertiary"
+                                android:textSize="9sp"
+                                android:fontFamily="monospace"/>
+                            <TextView
+                                android:id="@+id/tv_detail_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="fill_horizontal"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CLEARANCE"
+                                android:textColor="@color/text_tertiary"
+                                android:textSize="9sp"
+                                android:fontFamily="monospace"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LEVEL 4"
+                                android:textColor="@color/status_green"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="monospace"/>
+                        </LinearLayout>
+                    </GridLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Bento Grid Stats -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:weightSum="2">
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.AdaptiveTrust.Card"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_detail_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/status_green"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TRUST_SCORE"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="9sp"
+                        android:fontFamily="monospace"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.AdaptiveTrust.Card"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_detail_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SECURE"
+                        android:textColor="@color/status_green"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RISK_STATUS"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="9sp"
+                        android:fontFamily="monospace"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Radar Chart -->
+        <com.github.mikephil.charting.charts.RadarChart
+            android:id="@+id/radar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Score breakdown -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tv_wa_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/accent_cyan"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:text="Wa (Auto): —"/>
+
+            <TextView
+                android:id="@+id/tv_wh_score"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/accent_purple"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:text="Wh (Human): —"/>
+        </LinearLayout>
+
+        <!-- Active Flags -->
+        <TextView
+            android:id="@+id/tv_flags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/status_red"
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Location + IP -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:id="@+id/tv_detail_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:fontFamily="monospace"/>
+            <TextView
+                android:id="@+id/tv_detail_ip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:fontFamily="monospace"/>
+        </LinearLayout>
+
+        <!-- ── Nudge Panel ──────────────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚡ HUMAN ADJUSTMENT (Wh)"
+            android:textColor="@color/accent_cyan"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:weightSum="3">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_verify"
+                style="@style/Widget.AdaptiveTrust.Button.Verify"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="@string/btn_verify"
+                android:textAllCaps="false"
+                android:textSize="11sp"
+                android:fontFamily="monospace"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_approve"
+                style="@style/Widget.AdaptiveTrust.Button.Approve"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="@string/btn_approve"
+                android:textAllCaps="false"
+                android:textSize="11sp"
+                android:fontFamily="monospace"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_suspend"
+                style="@style/Widget.AdaptiveTrust.Button.Suspend"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="@string/btn_suspend"
+                android:textAllCaps="false"
+                android:textSize="11sp"
+                android:fontFamily="monospace"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_remove"
+            style="@style/Widget.AdaptiveTrust.Button.Suspend"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Remove User"
+            android:textAllCaps="false"
+            android:textSize="11sp"
+            app:icon="@android:drawable/ic_menu_delete"
+            app:iconGravity="textStart"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="monospace"/>
+
+        <!-- Biometric note -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/biometric_required"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Progress + Result -->
+        <ProgressBar
+            android:id="@+id/progress_nudge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/accent_cyan"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_nudge_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:padding="8dp"
+            android:visibility="gone"/>
+
+        <!-- ── Nudge History ─────────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📋 ADJUSTMENT HISTORY"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.12"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_nudge_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/bg_surface"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_last_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_tertiary"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

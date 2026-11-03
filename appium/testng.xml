@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="AdaptiveTrust Mobile E2E Automation Suite" verbose="2">
+    <listeners>
+        <listener class-name="com.adaptivetrust.qa.listeners.TestListener" />
+    </listeners>
+
+    <test name="Authentication Tests">
+        <classes>
+            <class name="com.adaptivetrust.qa.tests.auth.LoginTests" />
+            <class name="com.adaptivetrust.qa.tests.auth.AdminSignUpTests" />
+            <class name="com.adaptivetrust.qa.tests.auth.EmployeeSignUpTests" />
+            <class name="com.adaptivetrust.qa.tests.auth.OTPVerifyTests" />
+        </classes>
+    </test>
+
+    <test name="Dashboard and Gateway Tests">
+        <classes>
+            <class name="com.adaptivetrust.qa.tests.dashboard.AdminDashboardTests" />
+            <class name="com.adaptivetrust.qa.tests.dashboard.EmployeeDashboardTests" />
+            <class name="com.adaptivetrust.qa.tests.superadmin.SuperAdminTests" />
+        </classes>
+    </test>
+
+    <test name="Navigation and Forms Tests">
+        <classes>
+            <class name="com.adaptivetrust.qa.tests.navigation.NavigationTests" />
+            <class name="com.adaptivetrust.qa.tests.forms.FormValidationTests" />
+            <class name="com.adaptivetrust.qa.tests.crud.CrudOperationTests" />
+        </classes>
+    </test>
+
+    <test name="Security, Quality and Regression Tests">
+        <classes>
+            <class name="com.adaptivetrust.qa.tests.security.SessionManagementTests" />
+            <class name="com.adaptivetrust.qa.tests.performance.PerformanceSmokeTests" />
+            <class name="com.adaptivetrust.qa.tests.accessibility.AccessibilityTests" />
+            <class name="com.adaptivetrust.qa.tests.regression.RegressionSuiteTests" />
+        </classes>
+    </test>
+</suite>

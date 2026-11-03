@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_nav_feed"
+        android:title="@string/nav_dashboard"/>
+
+    <item
+        android:id="@+id/consoleFragment"
+        android:icon="@drawable/ic_nav_console"
+        android:title="@string/nav_console"/>
+
+    <item
+        android:id="@+id/sensitivityFragment"
+        android:icon="@drawable/ic_nav_sensitivity"
+        android:title="@string/nav_sensitivity"/>
+
+    <item
+        android:id="@+id/integrationsFragment"
+        android:icon="@drawable/ic_nav_integrations"
+        android:title="Sources"/>
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_nav_settings"
+        android:title="Config"/>
+
+</menu>
