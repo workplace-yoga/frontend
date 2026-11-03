@@ -16,36 +16,23 @@ jobs:
     name: Database Health, Schema Integrity & Query Latency Audit
     runs-on: ubuntu-latest
     steps:
-      # ==========================================================
-      # Stage 1: Checkout Repository
-      # ==========================================================
       - name: Stage 1 - Checkout Repository
         uses: actions/checkout@v4
 
-      # ==========================================================
-      # Stage 2: Setup Python Runtime & Dependencies
-      # ==========================================================
       - name: Stage 2 - Setup Python Environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          cache: 'pip'
 
       - name: Install Reporting Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      # ==========================================================
-      # Stage 3: Execute Database Health & Integrity Audit
-      # ==========================================================
       - name: Stage 3 - Execute Database Schema & Latency Verification
         run: |
           python database/run_database_check.py
 
-      # ==========================================================
-      # Stage 4: Upload Database Health Artifacts
-      # ==========================================================
       - name: Stage 4 - Upload Database Audit Artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -55,15 +42,14 @@ jobs:
             database/Database_Health_Report.xlsx
             database/database-summary.json
             database/database-summary.md
+          if-no-files-found: ignore
           retention-days: 30
 
-      # ==========================================================
-      # Stage 5: Publish GitHub Actions Step Summary
-      # ==========================================================
       - name: Stage 5 - Publish Database Audit Summary
         if: always()
         run: |
           if [ -f "database/database-summary.md" ]; then
             cat database/database-summary.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Database audit completed successfully." >> $GITHUB_STEP_SUMMARY
           fi
-

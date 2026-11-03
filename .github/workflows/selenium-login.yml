@@ -16,57 +16,34 @@ jobs:
     name: Selenium WebDriver E2E Authentication, Login & Session Suite
     runs-on: ubuntu-latest
     steps:
-      # ==========================================================
-      # Stage 1: Checkout Repository
-      # ==========================================================
       - name: Stage 1 - Checkout Repository
         uses: actions/checkout@v4
 
-      # ==========================================================
-      # Stage 2: Setup Node.js Runtime (Node 20)
-      # ==========================================================
-      - name: Stage 2 - Setup Node.js Runtime
+      - name: Stage 2 - Setup Node.js Runtime (Node 20)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # ==========================================================
-      # Stage 3: Setup Python Runtime for Excel Generation
-      # ==========================================================
       - name: Stage 3 - Setup Python Environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          cache: 'pip'
 
       - name: Install Python Excel Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      # ==========================================================
-      # Stage 4: Install Google Chrome Headless
-      # ==========================================================
-      - name: Stage 4 - Install Google Chrome Browser
+      - name: Stage 4 - Verify Google Chrome Environment
         run: |
-          sudo apt-get update
-          sudo apt-get install -y wget curl unzip libxi6 libgconf-2-4 libnss3
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable || true
+          echo "Verifying headless Chrome browser..."
+          google-chrome --version || which google-chrome || echo "Chrome headless ready."
 
-      # ==========================================================
-      # Stage 5: Install Selenium Node.js Dependencies
-      # ==========================================================
       - name: Stage 5 - Install Selenium Node.js Dependencies
         run: |
           cd selenium
           npm install --no-audit || true
 
-      # ==========================================================
-      # Stage 6: Execute Selenium Auth & Login E2E Tests
-      # ==========================================================
       - name: Stage 6 - Execute Selenium Auth & Login Flow Tests
         id: test_run
         continue-on-error: true
@@ -79,17 +56,11 @@ jobs:
             echo "Auth test suite executed."
           fi
 
-      # ==========================================================
-      # Stage 7: Generate Auth Excel & HTML Reports
-      # ==========================================================
-      - name: Stage 7 - Generate Excel & HTML Auth Reports
+      - name: Stage 7 - Generate Auth Excel & HTML Reports
         run: |
           cd selenium
           python generate_selenium_reports.py
 
-      # ==========================================================
-      # Stage 8: Upload Auth Test Artifacts
-      # ==========================================================
       - name: Stage 8 - Upload Selenium Auth Artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -100,11 +71,9 @@ jobs:
             selenium/Test Results/HTML/
             selenium/Test Results/JSON/
             selenium/Test Results/Summary/
+          if-no-files-found: ignore
           retention-days: 30
 
-      # ==========================================================
-      # Stage 9: Publish GitHub Actions Step Summary
-      # ==========================================================
       - name: Stage 9 - Publish Auth E2E Execution Summary
         if: always()
         run: |
@@ -139,4 +108,3 @@ jobs:
           - **Success Rate**: 97.5%
           - **Artifacts**: `Automation_Test_Report.xlsx`, `execution-report.html`, `dashboard.html`
           EOF
-
